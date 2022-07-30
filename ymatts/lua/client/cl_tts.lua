@@ -1,13 +1,11 @@
 net.Receive("DoTTS", function()
 	TextMessage = net.ReadString()
-
-	----------- Config -----------
-    VOICE_NUMBER = 3  -- Choose voice from 1 to 6
-    ------------------------------
     
     local function callbackSuccess(code, body)
         local j = util.JSONToTable(body)
         local link = j['URL']
+
+        print(link)
 
         if file.Exists("ymattsconfig/ymattsconfig.json", "DATA") then
         	local TTSConfig = util.JSONToTable(file.Read("ymattsconfig/ymattsconfig.json", "DATA")) 
